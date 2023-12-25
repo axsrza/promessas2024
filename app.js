@@ -1,4 +1,6 @@
 // app.js
+import { db } from './firebase';
+
 const promiseForm = document.getElementById('promiseForm');
 const promiseNameInput = document.getElementById('promiseName');
 const promiseList = document.getElementById('promiseList');
