@@ -24,9 +24,18 @@ function addPromise() {
     }
 }
 
+// ...
+
 function displayPromises() {
+    console.log("promiseList:", promiseList);  // Adicione este log
+
     if (typeof db !== 'undefined') {
         db.collection('promessas').onSnapshot(function (snapshot) {
+            if (promiseList === null) {
+                console.error("promiseList é null.");
+                return;
+            }
+
             promiseList.innerHTML = '';
             snapshot.forEach(function (doc) {
                 var promiseData = doc.data();
@@ -48,6 +57,9 @@ function displayPromises() {
         console.error('Firebase não inicializado corretamente.');
     }
 }
+
+// ...
+
 
 function togglePromiseCompletion(id, completed) {
     if (typeof db !== 'undefined') {
