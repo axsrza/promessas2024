@@ -42,4 +42,9 @@ function togglePromiseCompletion(id, completed) {
     db.collection('promessas').doc(id).update({ completed });
 }
 
-displayPromises();
+// Verifica se o Firebase foi inicializado corretamente antes de chamar displayPromises
+if (typeof db !== 'undefined') {
+    displayPromises();
+} else {
+    console.error('Firebase não inicializado corretamente.');
+}
