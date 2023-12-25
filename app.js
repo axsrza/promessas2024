@@ -1,5 +1,5 @@
 // app.js
-import { db } from './firebase.js'; // Alterei a importação para incluir a extensão ".js"
+import { db } from './firebase.js';
 
 const promiseForm = document.getElementById('promiseForm');
 const promiseNameInput = document.getElementById('promiseName');
@@ -44,5 +44,9 @@ function togglePromiseCompletion(id, completed) {
     db.collection('promessas').doc(id).update({ completed });
 }
 
-// Chama displayPromises diretamente, pois o Firebase já foi importado
-displayPromises();
+// Verifica se o Firebase foi inicializado corretamente antes de chamar displayPromises
+if (typeof db !== 'undefined') {
+    displayPromises();
+} else {
+    console.error('Firebase não inicializado corretamente.');
+}
