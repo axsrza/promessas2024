@@ -1,5 +1,5 @@
 // app.js
-import { db } from './firebase';
+import { db } from './firebase.js'; // Alterei a importação para incluir a extensão ".js"
 
 const promiseForm = document.getElementById('promiseForm');
 const promiseNameInput = document.getElementById('promiseName');
