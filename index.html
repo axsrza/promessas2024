@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promessas 2024</title>
+
+    <!-- Scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
+
+    <!-- Seu script do Firebase -->
+    <script src="firebase.js"></script>
+
+    <!-- Seu script principal -->
+    <script src="app.js"></script>
 </head>
 <body>
     <h1>Registros de Promessas para 2024</h1>
@@ -13,8 +23,5 @@
         <button type="button" onclick="addPromise()">Adicionar Promessa</button>
     </form>
     <ul id="promiseList"></ul>
-
-    <script src="firebase.js"></script>
-    <script src="app.js"></script>
 </body>
 </html>
