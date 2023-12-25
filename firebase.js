@@ -1,5 +1,5 @@
 // firebase.js
-const firebaseConfig = {
+var firebaseConfig = {
     apiKey: 'AIzaSyA5Nuat8zdtRd8cAB64Ti-0noV6XRWBuqA',
     authDomain: 'promessas2024.firebaseapp.com',
     projectId: 'promessas2024',
@@ -9,4 +9,4 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+var db = firebase.firestore();
