@@ -1,11 +1,20 @@
 // app.js
 
+// Função para aguardar o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', function () {
+    // Obtenha referências aos elementos depois que o DOM estiver totalmente carregado
     var promiseForm = document.getElementById('promiseForm');
     var promiseNameInput = document.getElementById('promiseName');
     var promiseList = document.getElementById('promiseList');
 
+    // Função para adicionar uma promessa
     function addPromise() {
+        // Verifique se os elementos do DOM foram encontrados corretamente
+        if (!promiseForm || !promiseNameInput || !promiseList) {
+            console.error('Elementos do DOM não encontrados.');
+            return;
+        }
+
         if (typeof db !== 'undefined') {
             var promiseName = promiseNameInput.value;
 
@@ -25,7 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Função para exibir as promessas
     function displayPromises() {
+        // Verifique se os elementos do DOM foram encontrados corretamente
+        if (!promiseList) {
+            console.error('Elementos do DOM não encontrados.');
+            return;
+        }
+
         console.log("promiseList:", promiseList);
 
         if (typeof db !== 'undefined') {
@@ -57,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Função para alternar o status de conclusão de uma promessa
     function togglePromiseCompletion(id, completed) {
         if (typeof db !== 'undefined') {
             db.collection('promessas').doc(id).update({ completed: completed });
@@ -65,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Verifica se o Firebase foi inicializado corretamente antes de chamar displayPromises
     if (typeof db !== 'undefined') {
         displayPromises();
     } else {
@@ -72,8 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Adiciona o evento de clique para o botão
-    promiseForm.addEventListener('submit', function (event) {
-        event.preventDefault();  // Evita o envio do formulário padrão
-        addPromise();
-    });
+    if (promiseForm) {
+        promiseForm.addEventListener('submit', function (event) {
+            event.preventDefault();  // Evita o envio do formulário padrão
+            addPromise();
+        });
+    }
 });
